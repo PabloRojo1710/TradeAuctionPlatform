@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--External references-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
+    </script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+    </script>
+    <!--Local references-->
+    <script src="js/scripts.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <!--Document meta info-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Trade Platform</title>
+</head>
+
+<body>
+    <!--Login Page-->
+    <div class="bg-primary webpage" id="login_page">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header">
+                                        <h3 class="text-center font-weight-light my-4">
+                                            Login
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <!--Login Form-->
+                                        <form id="login_form">
+                                            <!--Username-->
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="login_username">User name</label>
+                                                <input class="form-control py-4" id="login_username" type="text" placeholder="Enter user name" required autofocus />
+                                                <div class="invalid-feedback">
+                                                    Invalid username.
+                                                </div>
+                                            </div>
+                                            <!--Password-->
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="login_password">Password</label>
+                                                <input class="form-control py-4" id="login_password" type="password" placeholder="Enter password" required />
+                                                <div class="invalid-feedback">
+                                                    Invalid password.
+                                                </div>
+                                            </div>
+                                            <!--Submit-->
+                                            <button class="btn btn-primary btn-block" type="submit">Login</button>
+                                        </form>
+                                    </div>
+                                    <!--Link to register page-->
+                                    <div class="card-footer text-center">
+                                        <div class="small">
+                                            <a id="login_to_register" href="#">Need an account? Sign up!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <!--Register Page-->
+    <div class="bg-primary webpage" id="register_page">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header">
+                                        <h3 class="text-center font-weight-light my-4">
+                                            Create Account
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <!--Register form-->
+                                        <form id="register_form">
+                                            <div class="form-row">
+                                                <!--Username-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="register-username">User
+                                                            Name</label>
+                                                        <input class="form-control" id="register_username" type="text" placeholder="Enter user name" required autofocus />
+                                                        <div class="invalid-feedback">
+                                                            User name already taken.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--User type-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="register_type" class="small mb-1">
+                                                            User type
+                                                        </label>
+                                                        <select class="form-control" id="register_type">
+                                                            <option value="BROKER">
+                                                                Broker
+                                                            </option>
+                                                            <option value="BIDDER">
+                                                                Bidder
+                                                            </option>
+                                                            <option value="ADMIN">
+                                                                Admin
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Email-->
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="register_email">Email</label>
+                                                <input class="form-control" id="register_email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" required />
+                                                <div class="invalid-feedback">
+                                                    Email already used.
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <!--Password-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="register_password">Password</label>
+                                                        <input class="form-control" id="register_password" type="password" placeholder="Enter password" required />
+                                                    </div>
+                                                </div>
+                                                <!--Confirm Password-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="register_password_confirm">
+                                                            Confirm Password
+                                                        </label>
+                                                        <input class="form-control" id="register_password_confirm" type="password" placeholder="Confirm password" required />
+                                                        <div class="invalid-feedback">
+                                                            Insert the same password.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Submit-->
+                                            <div class="form-group mt-4 mb-0">
+                                                <button class="btn btn-primary btn-block" type="submit">
+                                                    Create Account
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!--Link to login-->
+                                    <div class="card-footer text-center">
+                                        <div class="small">
+                                            <a id="register_to_login" href="">Have an account? Go to login</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <!--Main Page-->
+    <div class="sb-nav-fixed webpage" id="main_page">
+        <!--Top Nativgation Bar-->
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand username-display" href="#">Trade Platform</a>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!--Search bar (hidden ftm)-->
+            <form class="d-none d-md-inline-block form-inline ml-auto m-2">
+                <div class="input-group" hidden>
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!--Bitcoin wallet-->
+            <div class="dropdown" id="main_bicoins_dropdown" uib-dropdown auto-close="outsideClick">
+                <div class="btn btn-secondary nav-item m-1" data-toggle="dropdown" id="main_bitcoin_dropdown_trigger">
+                    <img class="align-self-center inverted" src="https://img.icons8.com/fluent-systems-filled/24/000000/bitcoin--v1.png" />
+                    <span class="text-white align-bottom" id="main_bitcoins_field">0</span>
+                </div>
+                <!--Buy bitcoin dropdown form-->
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-xl-right p-4" aria-labelledby="main_bitcoin_dropdown_trigger">
+                    <form id="main_bitcoins_form">
+                        <!--Bitcoin amount-->
+                        <div class="form-group">
+                            <label for="main_bitcoins_amount_field">Bitcoin amount</label>
+                            <div class="input-group">
+                                <input type="number" step="any" min="0" class="form-control" id="main_bitcoins_amount_field" required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">BTC</div>
+                                </div>
+                                <div class="invalid-feedback">You don't have enough money.</div>
+                            </div>
+                            <small class="form-text text-muted" id="main_bitcoins_price_display"></small>
+                        </div>
+                        <!--Bitcoin price-->
+                        <div class="form-group">
+                            <label for="main_bitcoins_total_price_display">Price</label>
+                            <div class="input-group">
+                                <input type="number" step="any" class="form-control" id="main_bitcoins_total_price_display" readonly>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted" id="main_bitcoins_comission_display">Platform comission:
+                                1%</small>
+                        </div>
+                        <!--Submit purchase-->
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Euros wallet -->
+            <div class="dropdown" id="main_euros_dropdown" uib-dropdown auto-close="outsideClick">
+                <div class="btn btn-secondary nav-item m-1" data-toggle="dropdown">
+                    <img class="align-self-center inverted" src="https://img.icons8.com/fluent-systems-filled/24/000000/euro-pound-exchange.png" />
+                    <span class="text-white align-bottom" id="main_euros_display">0</span>
+                </div>
+                <!--Deposit money dropdown-->
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-xl-right p-4">
+                    <form id="main_euros_deposit_form">
+                        <!--Money Amount-->
+                        <div class="form-group">
+                            <label for="input-money-deposit">Deposit money</label>
+                            <div class="input-group">
+                                <input class="form-control" id="main_euros_deposit_field" type="number" step="any" min="0" required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Submit deposit-->
+                        <button type="submit" class="btn btn-primary btn-block">Deposit</button>
+                    </form>
+                </div>
+            </div>
+            <!-- User Dropdown -->
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#" id="main_profile_btn">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" id="main_logout_btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--Content layout-->
+        <div id="layoutSidenav">
+            <!--Sidebar-->
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">
+                                Trading
+                            </div>
+                            <!--Purchases button-->
+                            <a class="nav-link restricted-option broker-access admin-access" href="#" id="main_purchases_btn">
+                                <div class="sb-nav-link-icon mr-2 inverted tinted">
+                                    <img src="https://img.icons8.com/windows/24/000000/money.png" />
+                                </div>
+                                Purchases
+                            </a>
+                            <!--Auctions button-->
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAuctions" aria-expanded="false" aria-controls="collapseAuctions">
+                                <div class="sb-nav-link-icon mr-2 inverted tinted">
+                                    <img src="https://img.icons8.com/windows/24/000000/auction.png" />
+                                </div>
+                                Auctions
+                                <div class="sb-sidenav-collapse-arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </div>
+                            </a>
+                            <!--Auctions collapsible section-->
+                            <div class="collapse" id="collapseAuctions" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link restricted-option admin-access bidder-access" href="#" id="main_ongoing_auctions_btn">Ongoing auctions</a>
+                                    <a class="nav-link restricted-option broker-access admin-access" href="#" id="main_your_auctions_btn">Your auctions</a>
+                                    <a class="nav-link restricted-option admin-access bidder-access" href="#" id="main_your_bids_btn">Your bids</a>
+                                </nav>
+                            </div>
+                            <div class="restricted-option admin-access">
+                                <div class="sb-sidenav-menu-heading">
+                                    Admin
+                                </div>
+                                <!--Comissions button-->
+                                <a class="nav-link" href="#" id="main_comissions_btn">
+                                    <div class="sb-nav-link-icon mr-2 inverted tinted">
+                                        <img src="https://img.icons8.com/windows/24/000000/sales-performance.png" />
+                                    </div>
+                                    Comissions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Logged profile name display-->
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        <div id="main_username_display"></div>
+                    </div>
+                </nav>
+            </div>
+            <!--Content-->
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <!-- Profile page -->
+                        <div id="main_profile_section" class="profile-section">
+                            <ol class="breadcrumb mb-4 mt-4">
+                                <li class="breadcrumb-item active" id="section-description">Trade Platoform</li>
+                                <li class="breadcrumb-item active" id="section-description">Profile</li>
+                            </ol>
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-user fa-fw mr-1"></i>Your profile
+                                </div>
+                                <!--Profile editing form-->
+                                <div class="card-body">
+                                    <form onsubmit="return false">
+                                        <div class="row">
+                                            <!--User name field-->
+                                            <div class="form-group col">
+                                                <label for="user-name">User name</label>
+                                                <input class="form-control" id="main_username_field" type="text" placeholder="ExampleName">
+                                            </div>
+                                            <!--Email field-->
+                                            <div class="form-group col">
+                                                <label for="user-email">Email</label>
+                                                <input class="form-control" id="main_email_field" type="email" placeholder="example@mail.com">
+                                            </div>
+                                            <!--Password field-->
+                                            <div class="form-group col">
+                                                <label>Password</label>
+                                                <div class="input-group" id="show_hide_password">
+                                                    <input class="form-control" type="password" value="currentpassword123" id="main_password_field">
+                                                    <div class="input-group-append">
+                                                        <a class="input-group-text password-toggle" href=""><i
+                                                                id="eye_icon" class="fa fa-eye-slash"
+                                                                aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--User type field-->
+                                            <div class="form-group col">
+                                                <label for="user-type">User type</label>
+                                                <input class="form-control" id="main_type_field" type="email" placeholder="Broker" disabled>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary float-right">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Purchase history -->
+                        <div id="main_purchases_section" class="profile-section">
+                            <ol class="breadcrumb mb-4 mt-4">
+                                <li class="breadcrumb-item active" id="section-description">Trade Platoform</li>
+                                <li class="breadcrumb-item active" id="section-description">Purchases</li>
+                            </ol>
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <img src="https://img.icons8.com/material-sharp/24/000000/purchase-order.png" class="mr-1" /> Your purchases
+                                </div>
+                                <div class="card-body">
+                                    <!-- Purchase history table -->
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" width="100%" cellspacing="0" id="main_purchases_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Bitcoin Amount</th>
+                                                    <th>Price per bitcoin</th>
+                                                    <th>Price</th>
+                                                    <th>Platform commission</th>
+                                                    <th>Final price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Ongoing Auctions -->
+                        <div id="main_ongoing_auctions_section" class="profile-section">
+                            <ol class="breadcrumb mb-4 mt-4">
+                                <li class="breadcrumb-item active" id="section-description">Trade Platoform</li>
+                                <li class="breadcrumb-item active" id="section-description">Auctions</li>
+                                <li class="breadcrumb-item active" id="section-description">Ongoing Auctions</li>
+                            </ol>
+                            <div>
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        Ongoing Auctions
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- Ongoing Auctions table -->
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="main_ongoing_auctions_table" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Start date</th>
+                                                        <th>Finish date</th>
+                                                        <th>Bicoin amount</th>
+                                                        <th>Initial price per bitcoin</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Your Auctions -->
+                        <div id="main_your_auctions_section" class="profile-section">
+                            <ol class="breadcrumb mb-4 mt-4">
+                                <li class="breadcrumb-item active" id="section-description">Trade Platoform</li>
+                                <li class="breadcrumb-item active" id="section-description">Auctions</li>
+                                <li class="breadcrumb-item active" id="section-description">Your Auctions</li>
+                            </ol>
+                            <!-- Create auction form -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Create Auction
+                                </div>
+                                <div class="card-body">
+                                    <form id="main_create_auctions_form">
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label for="input-money-deposit">Start date</label>
+                                                <div class="input-group">
+                                                    <input type="date" class="form-control" id="main_create_auction_start_date_field" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label for="input-money-deposit">Finish date</label>
+                                                <div class="input-group">
+                                                    <input type="date" class="form-control" id="main_create_auction_finish_date_field" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label for="input-money-deposit">Bitcoin amount</label>
+                                                <div class="input-group">
+                                                    <input type="number" step="any" required class="form-control" id="main_create_auction_bitcoins_field" min="0">
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text">BTC</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label for="input-money-deposit">Price per bitcoin</label>
+                                                <div class="input-group">
+                                                    <input type="number" step="any" required class="form-control" id="main_create_auction_price_field" min="0">
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text">€</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary float-right">Create
+                                            auction</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--Your ongoing auctions table -->
+                            <div class="card mb-4" hidden>
+                                <div class="card-header">
+                                    Your ongoing auctions
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" id="main_your_ongoing_auctions_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Start date</th>
+                                                    <th>Finish date</th>
+                                                    <th>Bicoin amount</th>
+                                                    <th>Initial price per bitcoin</th>
+                                                    <th>Bidders</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>20/10/2020</td>
+                                                    <td>30/10/2020</td>
+                                                    <td>60 BTC</td>
+                                                    <td>25,000.00 €</td>
+                                                    <td>23</td>
+                                                    <td>20,000.00€</td>
+                                                </tr>
+                                                <tr>
+                                                    <tr>
+                                                        <td>15/10/2020</td>
+                                                        <td>10/11/2020</td>
+                                                        <td>20 BTC</td>
+                                                        <td>500.00 €</td>
+                                                        <td>10</td>
+                                                        <td>350.00 €</td>
+                                                    </tr>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Your finished auctions table -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Your auctions
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" width="100%" cellspacing="0" id="main_your_finished_auctions_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Start date</th>
+                                                    <th>Finish date</th>
+                                                    <th>Bicoin amount</th>
+                                                    <th>Initial price per bitcoin</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Your Bids -->
+                        <div id="main_your_bids_section" class="profile-section">
+                            <ol class="breadcrumb mb-4 mt-4">
+                                <li class="breadcrumb-item active" id="section-description">Trade Platoform</li>
+                                <li class="breadcrumb-item active" id="section-description">Auctions</li>
+                                <li class="breadcrumb-item active" id="section-description">Your Bids</li>
+                            </ol>
+                            <!-- Your bids won table -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    Your bids won
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="main_your_bids_won_table" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr hidden>
+                                                    <th colspan="4">Auction info</th>
+                                                    <th colspan="2">Your bid</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Bitcoins</th>
+                                                    <th>Price per bitcoin</th>
+                                                    <th>Bitcoins earned</th>
+                                                    <th>Comission</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Your bids table -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    All your bids
+                                </div>
+                                <div class="card-body">
+                                    <div class="btn btn-secondary mb-4" data-toggle="dropdown">
+                                        <span class="text-white align-bottom" id="main_your_bids_money_blocked_display">0</span>
+                                        <img class="align-self-center inverted" src="https://img.icons8.com/fluent-systems-filled/24/000000/euro-pound-exchange.png" />
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="main_your_bids_table" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr hidden>
+                                                    <th colspan="4">Auction info</th>
+                                                    <th colspan="2">Your bid</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Bitcoins</th>
+                                                    <th>Price per bitcoin</th>
+                                                    <th>Bitcoins earned</th>
+                                                    <th>Comission</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Your closed auction bids table -->
+                            <div class="card mb-4" hidden>
+                                <div class="card-header">
+                                    Your closed auction bids
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="4">Auction info</th>
+                                                    <th colspan="3">Your bid</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Start date</th>
+                                                    <th>Finish date</th>
+                                                    <th>Bicoin amount</th>
+                                                    <th>Initial price per bitcoin</th>
+                                                    <th>Bitcoin amount</th>
+                                                    <th>Euros per bitcoin</th>
+                                                    <th>Successful</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <td>X</td>
+                                                <td>X</td>
+                                                <td>X</td>
+                                                <td>X</td>
+                                                <td>X</td>
+                                                <td>X</td>
+                                                <td>X</td>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Comission -->
+                        <div id="main_comissions_section" class="profile-section">
+                            <ol class="breadcrumb mb-4 mt-4">
+                                <li class="breadcrumb-item active" id="section-description">Trade Platoform</li>
+                                <li class="breadcrumb-item active" id="section-description">Commissions</li>
+                            </ol>
+                            <!-- User Purchases -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    User purchases
+                                </div>
+                                <div class="card-body">
+                                    <div class="btn btn-secondary mb-4" data-toggle="dropdown">
+                                        <span class="text-white align-bottom" id="main_comission_total_display">0</span>
+                                        <img class="align-self-center inverted" src="https://img.icons8.com/fluent-systems-filled/24/000000/euro-pound-exchange.png" />
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="main_comissions_table" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Transaction type</th>
+                                                    <th>Date</th>
+                                                    <th>Euros</th>
+                                                    <th>Comission</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <!--Notification Modal-->
+    <div class="modal fade" id="modal_notification" tabindex="-1" aria-labelledby="modal_notification_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_notification_label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal_notification_body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Confirmation Modal-->
+    <div class="modal fade" id="modal_confirmation" tabindex="-1" aria-labelledby="modal_confirmation_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_confirmation_label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal_confirmation_body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button id="modal_confirmation_btn" type="button" class="btn btn-primary">Confirm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Bid Modal-->
+    <div class="modal fade" id="modal_bid" tabindex="-1" aria-labelledby="modal_bid_form_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_bid_form_label">Auction participation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal_confirmation_body">
+                    <form id="modal_bid_form" class="m-2">
+                        <div class="form-group">
+                            <label for="modal_bid_form_bitcoins_field">Bitcoin amount</label>
+                            <div class="input-group">
+                                <input type="number" step="any" min="0" class="form-control" id="modal_bid_form_bitcoins_field" required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">BTC</div>
+                                </div>
+                                <div id="modal_bid_form_bitcoins_field_invalid" class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="modal_bid_form_euros_field">Euros per bitcoin</label>
+                            <div class="input-group">
+                                <input class="form-control" id="modal_bid_form_euros_field" type="number" step="any" min="0" required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                                <div id="modal_bid_form_euros_field_invalid" class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="modal_bid_form_price_display">Price</label>
+                            <div class="input-group">
+                                <input type="number" step="any" class="form-control" id="modal_bid_form_price_display" readonly>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                                <div id="modal_bid_form_price_display_invalid" class="invalid-feedback"></div>
+                            </div>
+                            <small class="form-text text-muted" id="modal_bid_form_comission_display"></small>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary btn-block">Bid</button>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-secondary btn-block" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
